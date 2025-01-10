@@ -314,10 +314,7 @@ class TangoDataWriter(object):
         :type xmlset: :obj:`str`
         """
         self.__fetcher = FetchNameHandler(streams=self._streams)
-        if sys.version_info > (3,):
-            sax.parseString(bytes(xmlset, 'utf-8'), self.__fetcher)
-        else:
-            sax.parseString(xmlset, self.__fetcher)
+        sax.parseString(xmlset, self.__fetcher)
         self.__xmlsettings = xmlset
 
     def __delXML(self):

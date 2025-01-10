@@ -50,11 +50,11 @@ class TangoDataWriterH5PYTest(unittest.TestCase):
     def __init__(self, methodName):
         unittest.TestCase.__init__(self, methodName)
 
-        self._scanXmlpart = """
+        self._scanXmlpart = u"""
     <group type="NXinstrument" name="instrument">
       <attribute name ="short_name"> scan instrument </attribute>
       <group type="NXdetector" name="detector">
-        <field units="m" type="NX_FLOAT" name="counter1">
+        <field units="µm" type="NX_FLOAT" name="counter1">
           <strategy mode="STEP"/>
           <datasource type="CLIENT">
             <record name="exp_c01"/>
@@ -1681,7 +1681,7 @@ ds.res2 = str(True)
             self.assertEqual(at.shape, ())
             self.assertEqual(at.dtype, "string")
             self.assertEqual(at.name, "units")
-            self.assertEqual(at[...], "m")
+            self.assertEqual(at[...], u"µm")
 
             at = cnt.attributes["nexdatas_source"]
             self.assertTrue(at.is_valid)
@@ -1747,7 +1747,7 @@ ds.res2 = str(True)
 
             if os.path.isfile(fname):
                 os.remove(fname)
-#            pass
+            # pass
 
     # scanRecord test
     # \brief It tests recording of simple h5 file
